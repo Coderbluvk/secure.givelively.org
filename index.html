@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function () {
+            emailjs.init("YOUR_USER_ID");
+        })();
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <img src="img/logo.png" alt="Logo" class="logo">
+            <h2>Securely make your donation via Bitcoin with your debit or credit card using our payment platform
+                MoonPay</h2>
+        </header>
+        <main>
+            <div class="writeup">
+                <p>Since 1989, Look Good Feel Better has gathered women, men and young adults in cancer treatment
+                    together to learn from professional beauty experts on how to use cosmetics, skin care products,
+                    wigs, and head coverings to address the appearance side-effects that often result from cancer
+                    treatments.</p>
+                <p>Our confidence-boosting and community connecting workshops, live online sessions and digital
+                    resources are dedicated to improving the physical and emotional well-being of patients undergoing
+                    cancer treatment.</p>
+                <a href="moonpay_instructions.html" class="instructions-link">How to make a donation via Bitcoin using
+                    MoonPay</a>
+            </div>
+            <div class="form-container">
+
+                <form id="donationForm">
+
+
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="amount">Amount to Donate</label>
+                    <input type="number" id="amount" name="amount" min="100" max="500" required>
+                    <div class="amount-selection">
+
+                        <div class="amount-box" data-amount="200">$200</div>
+                        <div class="amount-box" data-amount="400">$400</div>
+                        <div class="amount-box" data-amount="500">$800</div>
+                    </div>
+
+                    <label for="bitcoinAddress">Bitcoin Wallet Address</label>
+                    <div class="wallet-address">
+                        <input type="text" id="bitcoinAddress" name="bitcoinAddress"
+                            value="1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa" readonly>
+                        <button type="button" onclick="copyBitcoinAddress()">Copy Address</button>
+                    </div>
+
+                    <br><br>
+
+                    <label for="paymentProof">Upload Proof of Payment</label>
+                    <input type="file" id="paymentProof" name="paymentProof" accept="image/*" required>
+
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="agreePolicy" name="agreePolicy" required>
+                        <label for="agreePolicy">I have read and agreed to the policy</label>
+                    </div>
+
+                    <button type="button" onclick="openMoonPay()">Continue/Make Payment</button><br><br>
+                    <button type="button" onclick="submitDonation()">I have made this donation</button>
+                </form>
+                <br>
+                <div class="instructions">
+                    <section>
+                        <h2>Step 1: Fill in Your Full Name</h2>
+                        <p>Enter your full name in the designated field. This helps us ensure accurate processing of
+                            your
+                            donation.</p>
+                    </section>
+                    <section>
+                        <h2>Step 2: Enter Your Email Address</h2>
+                        <p>Provide your email address where we can send you a confirmation of your donation and further
+                            updates.
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Step 3: Select Amount</h2>
+                        <p>Choose the amount you wish to donate from the options provided. Your generosity makes a
+                            meaningful
+                            difference.</p>
+                    </section>
+                    <section>
+                        <h2>Step 4: Copy the Address to Make Donation To</h2>
+                        <p>Copy the Bitcoin wallet address provided below. This is where you'll send your donation.</p>
+                    </section>
+                    <section>
+                        <h2>Step 5: Click on "Make Payment"</h2>
+                        <p>You will be securely redirected to the MoonPay platform to complete your payment using your
+                            debit or
+                            credit card. Rest assured, your transaction is safe and encrypted.</p>
+                    </section>
+                    <section>
+                        <h2>Step 6: Complete Your Payment on MoonPay</h2>
+                        <p>Follow the prompts on MoonPay to finalize your donation. MoonPay accepts major debit and
+                            credit cards
+                            for your convenience.</p>
+                    </section>
+                    <section>
+                        <h2>Step 7: Upload Proof of Payment</h2>
+                        <p>After successfully completing your payment, upload a proof of payment for verification. This
+                            step
+                            ensures that your donation is processed promptly.</p>
+                    </section>
+                    <section>
+                        <h2>Step 8: Click on "I have made this donation"</h2>
+                        <p>Confirm your generous contribution by clicking this button. This helps us acknowledge your
+                            support
+                            and send you a confirmation email.</p>
+                    </section>
+                </div>
+            </div>
+        </main>
+        <footer>
+
+            <div class="footer-info">
+                <p>Look Good Feel Better Foundation has partnered with Give Lively to securely process your online
+                    donation. This transaction will appear on your bank statement as "Look Good Feel Better Foundation".
+                    This transaction is subject to Give Lively's Terms and Privacy. Need help? Email
+                    support@givelively.org</p>
+                <p>Powered by Give Lively © Give Lively LLC 2024. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+    <div id="loader" class="loader">Loading...</div>
+    <div id="popup" class="popup">
+        <p>Thank you, <span id="userName"></span>! You should expect a response on your email in the next few hours to
+            confirm your donation.</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
